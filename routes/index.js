@@ -9,7 +9,8 @@ router.get('/api/find/cartwheel/products/', function(req, res, next) {
   //res.json({"Start":"here"});
   var keyword = req.query.keyword;
     if(keyword){//a keyword was set.
-        makeRequest('https://stage-api.target.com/v2/products/search?searchTerm='+keyword+'&key='+key,function(body){
+        var url = "https://tws-secure.target.com/searchservice/item/search_results/v2/by_keyword"
+        makeRequest(url+'?search_term='+keyword,function(body){
             var payloadJson = eval('('+body+')');
             res.json(payloadJson);
         });
